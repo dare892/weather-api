@@ -1,5 +1,5 @@
 ### Date
-10/29/2020
+10/28/2020
 ### Location of deployed application
 https://weather-api-thinkific.herokuapp.com/
 ### Time spent

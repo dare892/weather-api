@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  access user: :all, all: [:fetch_info]
 
   def index
     if !current_user

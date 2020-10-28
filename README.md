@@ -10,7 +10,6 @@ If applicable, please provide the url where we can find and interact with your r
 - API key management tab for creating new keys
 - JSON response to API endpoint if correct key passed
 ### Shortcuts/Compromises made
-- Permissions
 - Better profile features (recover password, welcome email, etc.)
 ### Stretch goals attempted
 - UI for the service

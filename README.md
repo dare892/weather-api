@@ -1,9 +1,9 @@
 ### Date
 10/29/2020
 ### Location of deployed application
-If applicable, please provide the url where we can find and interact with your running application.
+https://weather-api-thinkific.herokuapp.com/
 ### Time spent
-2.5 hours
+3 hours
 ### Assumptions made
 - User can sign up, sign in and sign out
 - User can search weather via web UI and displays results nicely

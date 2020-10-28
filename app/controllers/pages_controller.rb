@@ -7,7 +7,7 @@ class PagesController < ApplicationController
   end
 
   def check_weather
-    @result = JSON.parse(fetch_info)
+    @result = JSON.parse(fetch_info(params[:city]).body)
   end
 
   def weather
@@ -19,7 +19,7 @@ class PagesController < ApplicationController
         render json: { error: 'Please Provide a city name.' }
       else
         begin
-          result = fetch_info
+          result = fetch_info(params[:city]).body
           api_key.increment!(:used)
           render json: result
         rescue => ex
@@ -29,13 +29,12 @@ class PagesController < ApplicationController
     end
   end
 
-  def fetch_info
-    city = params[:city]
-    url = URI.parse("http://api.openweathermap.org/data/2.5/weather?q=#{params[:city]}&APPID=9819c37043ce8b4b47041ca47c2ee388")
+  def fetch_info(city)
+    url = URI.parse("http://api.openweathermap.org/data/2.5/weather?q=#{city}&APPID=9819c37043ce8b4b47041ca47c2ee388")
     req = Net::HTTP::Get.new(url.to_s)
     res = Net::HTTP.start(url.host, url.port) {|http|
       http.request(req)
     }
-    res.body
+    res
   end
 end

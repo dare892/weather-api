@@ -1,0 +1,8 @@
+.row
+  .col-sm-6.offset-sm-3
+    .form-field#search-area.zero-state
+      = form_tag '/check_weather.js', remote: true do |f|
+        = text_field_tag :city, nil, class: 'form-control', placeholder: 'Enter a city!'
+        = submit_tag 'Search', class: 'btn btn-primary'
+.row
+  .col-sm-12 data-target='weather-result'

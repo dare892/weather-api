@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong User:
+  = @api_key.user
+p
+  strong Name:
+  = @api_key.name
+p
+  strong Token:
+  = @api_key.token
+p
+  strong Used:
+  = @api_key.used
+p
+  strong Expiration:
+  = @api_key.expiration
+
+=> link_to 'Edit', edit_api_key_path(@api_key)
+'|
+=< link_to 'Back', api_keys_path

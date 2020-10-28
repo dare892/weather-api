@@ -1,0 +1,38 @@
+.form
+  = form_for @api_key do |f|
+    - if @api_key.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@api_key.errors.count, "error")} prohibited this api_key from being saved:"
+        ul
+          - @api_key.errors.full_messages.each do |message|
+            li = message
+
+    .row
+      .col-sm-4
+        .form-field
+          = f.label :name, 'Name (Optional)'
+          = f.text_field :name, class: 'form-control', placeholder: 'Ex>My test keys'
+      .col-sm-8
+        .form-field
+          = f.label :expiration
+          br
+          .datatime-select-wrapper = f.datetime_select :expiration
+    br
+    .row
+      .col-sm-12
+        .form-field
+          label API KEY
+          input.form-control type="" disabled="true" value="#{@api_key.token}"
+          .hidden = f.text_field :token, value: @api_key.token
+
+        br
+        .alert.alert-warning
+          span = "EX> #{v1_weather_url}?city=Seattle&api_key=#{@api_key.token}"
+      .col-sm-12
+        .float-right
+          .actions = f.submit 'Submit', class: 'btn btn-primary'
+        br
+        br
+        = link_to 'Back', api_keys_path
+        - if @api_key.id
+          = link_to 'Delete', @api_key, data: { confirm: 'Are you sure?' }, method: :delete, style: 'margin-left: 20px;'

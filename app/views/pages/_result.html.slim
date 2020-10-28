@@ -1,0 +1,53 @@
+#weather-result
+  - if @result['cod'] == '404'
+    p.text-align-center City not found.
+  - else
+    .text-align-center
+      .city = @result['name']
+      - description = @result['weather'].first['description']
+      .description = description
+
+      .temp
+        span = absolute_temp_to_c(@result['main']['temp'])
+        span.symbol = "°C"
+
+    .row
+      .col-sm-6.offset-sm-3
+        table.table
+          tr
+            td Current Temperature
+            td = "#{absolute_temp_to_c(@result['main']['temp'])}°C"
+          tr
+            td Min
+            td = "#{absolute_temp_to_c(@result['main']['temp_min'])}°C"
+          tr
+            td Max
+            td = "#{absolute_temp_to_c(@result['main']['temp_max'])}°C"
+          tr
+            td Pressure
+            td = "#{@result['main']['pressure']} inHg"
+          tr
+            td Humidity
+            td = "#{@result['main']['humidity']}%"
+          tr
+            td Wind
+            td = "#{@result['wind']['speed']} m/s"
+          tr
+            td Longitude
+            td = "#{@result['coord']['lon']} °"
+          tr
+            td Latitude
+            td = "#{@result['coord']['lat']} °"
+
+- if @result['cod'] != '404' && description
+  javascript:
+    if ("#{description.include?('clear')}" == 'true'){
+      $('.yield').removeClass('cloudy').addClass('clear')
+    } else if("#{description.include?('clouds')}" == 'true'){
+      $('.yield').removeClass('clear').addClass('cloudy')
+    } else {
+      $('.yield').removeClass('cloudy').removeClass('clear')
+    }
+- else
+  javascript:
+    $('.yield').removeClass('cloudy').removeClass('clear')

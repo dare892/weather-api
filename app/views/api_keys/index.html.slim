@@ -1,0 +1,30 @@
+h4 My API keys
+- if @api_keys.blank?
+  = link_to 'Generate New Api key', new_api_key_path, class: 'btn btn-primary', style: 'width: 100%;'
+- else
+  table.table
+    thead
+      tr
+        th Name
+        th Token
+        th URL
+        th Used
+        th Expiration
+        th
+
+    tbody
+      - @api_keys.each do |api_key|
+        tr
+          td = api_key.name.presence || '-'
+          td = api_key.token
+          td = link_to "#{v1_weather_url}?city=CITY_NAME&api_key=#{api_key.token}", "#{v1_weather_url}?city=CITY_NAME&api_key=#{api_key.token}", target: '_blank'
+          td = api_key.used
+          td
+            - if api_key.expiration.present?
+              = api_key.expiration.strftime("%b %d, %Y")
+            - else
+              = '-'
+          td = link_to 'Edit', edit_api_key_path(api_key)
+
+  br
+  = link_to 'New Api key', new_api_key_path, class: 'btn btn-primary float-right'

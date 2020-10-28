@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Weatherapi</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= render partial: "layouts/meta_tags" %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <% if notice %>
+      <div class="alert alert-primary"><%= notice %></div>
+    <% end %>
+    <% if alert %>
+      <div class="alert alert-danger"><%= alert %></div>
+    <% end %>
+    <% if current_user %>
+      <%= render partial: 'layouts/nav' %>
+    <% end %>
+    <div class='yield'>
+      <div class='container'>
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>

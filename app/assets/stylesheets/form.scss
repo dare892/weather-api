@@ -1,0 +1,26 @@
+.form{
+  h1{
+    font-size: 25px;
+    margin-bottom: 50px;
+  }
+
+  input{
+    width: 100%;
+  }
+
+  label{
+    font-size: 13px;
+    margin-bottom: 0;
+  }
+
+  input[type=submit]{
+    margin-top: 30px;
+  }
+
+  .datatime-select-wrapper select{
+    height: 37px;
+    border: 1px solid #ced4da;
+    background: transparent;
+    color: gray;
+  }
+}
